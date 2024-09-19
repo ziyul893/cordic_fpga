@@ -1,0 +1,662 @@
+Analysis & Synthesis report for Cordic_fpga
+Wed Jan 24 22:57:10 2024
+Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. State Machine - |cordic_wrapper|signature_analyzer:cordic_monitor_0|r_state
+ 10. State Machine - |cordic_wrapper|pseudo_rand_num_gen:cordic_driver_0|r_state
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: Top-level Entity: |cordic_wrapper
+ 16. Parameter Settings for User Entity Instance: pseudo_rand_num_gen:cordic_driver_0
+ 17. Parameter Settings for User Entity Instance: pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0
+ 18. Parameter Settings for User Entity Instance: cordic_top_5:cordic_top_0
+ 19. Parameter Settings for User Entity Instance: signature_analyzer:cordic_monitor_0
+ 20. Parameter Settings for User Entity Instance: signature_analyzer:cordic_monitor_0|misr:misr_0
+ 21. Port Connectivity Checks: "signature_analyzer:cordic_monitor_0"
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2019  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Wed Jan 24 22:57:10 2024       ;
+; Quartus Prime Version           ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
+; Revision Name                   ; Cordic_fpga                                 ;
+; Top-level Entity Name           ; cordic_wrapper                              ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 222                                         ;
+; Total pins                      ; 172                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 2                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSXFC6D6F31C6     ;                    ;
+; Top-level entity name                                                           ; cordic_wrapper     ; Cordic_fpga        ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 20          ;
+; Maximum allowed            ; 14          ;
+;                            ;             ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 14          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
+;     Processor 5            ;   0.1%      ;
+;     Processor 6            ;   0.1%      ;
+;     Processor 7            ;   0.1%      ;
+;     Processor 8            ;   0.1%      ;
+;     Processors 9-14        ;   0.1%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                             ;
++----------------------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                   ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                       ; Library ;
++----------------------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------+---------+
+; CORDIC-demo/src/verilog/signature_analyzer.sv      ; yes             ; User SystemVerilog HDL File  ; C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/signature_analyzer.sv      ;         ;
+; CORDIC-demo/src/verilog/pseudo_rand_num_gen_pkg.sv ; yes             ; User SystemVerilog HDL File  ; C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/pseudo_rand_num_gen_pkg.sv ;         ;
+; CORDIC-demo/src/verilog/pseudo_rand_num_gen.sv     ; yes             ; User SystemVerilog HDL File  ; C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/pseudo_rand_num_gen.sv     ;         ;
+; CORDIC-demo/src/verilog/misr.sv                    ; yes             ; User SystemVerilog HDL File  ; C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv                    ;         ;
+; CORDIC-demo/src/verilog/lfsr.sv                    ; yes             ; User SystemVerilog HDL File  ; C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv                    ;         ;
+; CORDIC-demo/src/verilog/cordic_wrapper_pkg.sv      ; yes             ; User SystemVerilog HDL File  ; C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper_pkg.sv      ;         ;
+; CORDIC-demo/src/verilog/cordic_wrapper.sv          ; yes             ; User SystemVerilog HDL File  ; C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper.sv          ;         ;
+; CORDIC-demo/src/verilog/cordic_top.sv              ; yes             ; User SystemVerilog HDL File  ; C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_top.sv              ;         ;
+; CORDIC-demo/src/verilog/async_reset.sv             ; yes             ; User SystemVerilog HDL File  ; C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/async_reset.sv             ;         ;
++----------------------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                               ;
++---------------------------------------------+-----------------------------+
+; Resource                                    ; Usage                       ;
++---------------------------------------------+-----------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 1059                        ;
+;                                             ;                             ;
+; Combinational ALUT usage for logic          ; 1953                        ;
+;     -- 7 input functions                    ; 0                           ;
+;     -- 6 input functions                    ; 153                         ;
+;     -- 5 input functions                    ; 675                         ;
+;     -- 4 input functions                    ; 319                         ;
+;     -- <=3 input functions                  ; 806                         ;
+;                                             ;                             ;
+; Dedicated logic registers                   ; 222                         ;
+;                                             ;                             ;
+; I/O pins                                    ; 172                         ;
+;                                             ;                             ;
+; Total DSP Blocks                            ; 2                           ;
+;                                             ;                             ;
+; Maximum fan-out node                        ; async_reset:async_rst_0|rst ;
+; Maximum fan-out                             ; 312                         ;
+; Total fan-out                               ; 9970                        ;
+; Average fan-out                             ; 3.95                        ;
++---------------------------------------------+-----------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                      ;
++------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node               ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                             ; Entity Name         ; Library Name ;
++------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------+---------------------+--------------+
+; |cordic_wrapper                          ; 1953 (129)          ; 222 (0)                   ; 0                 ; 2          ; 172  ; 0            ; |cordic_wrapper                                                 ; cordic_wrapper      ; work         ;
+;    |async_reset:async_rst_0|             ; 0 (0)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |cordic_wrapper|async_reset:async_rst_0                         ; async_reset         ; work         ;
+;    |cordic_top_5:cordic_top_0|           ; 1544 (1544)         ; 110 (110)                 ; 0                 ; 2          ; 0    ; 0            ; |cordic_wrapper|cordic_top_5:cordic_top_0                       ; cordic_top_5        ; work         ;
+;    |pseudo_rand_num_gen:cordic_driver_0| ; 123 (2)             ; 53 (3)                    ; 0                 ; 0          ; 0    ; 0            ; |cordic_wrapper|pseudo_rand_num_gen:cordic_driver_0             ; pseudo_rand_num_gen ; work         ;
+;       |lfsr:lfsr_0|                      ; 121 (121)           ; 50 (50)                   ; 0                 ; 0          ; 0    ; 0            ; |cordic_wrapper|pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0 ; lfsr                ; work         ;
+;    |signature_analyzer:cordic_monitor_0| ; 157 (2)             ; 57 (2)                    ; 0                 ; 0          ; 0    ; 0            ; |cordic_wrapper|signature_analyzer:cordic_monitor_0             ; signature_analyzer  ; work         ;
+;       |misr:misr_0|                      ; 155 (155)           ; 55 (55)                   ; 0                 ; 0          ; 0    ; 0            ; |cordic_wrapper|signature_analyzer:cordic_monitor_0|misr:misr_0 ; misr                ; work         ;
++------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary    ;
++-----------------------------------+-------------+
+; Statistic                         ; Number Used ;
++-----------------------------------+-------------+
+; Two Independent 18x18             ; 2           ;
+; Total number of DSP blocks        ; 2           ;
+;                                   ;             ;
+; Fixed Point Mixed Sign Multiplier ; 2           ;
++-----------------------------------+-------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------+
+; State Machine - |cordic_wrapper|signature_analyzer:cordic_monitor_0|r_state ;
++--------------+--------------+--------------+--------------------------------+
+; Name         ; r_state.IDLE ; r_state.DONE ; r_state.RUN                    ;
++--------------+--------------+--------------+--------------------------------+
+; r_state.IDLE ; 0            ; 0            ; 0                              ;
+; r_state.RUN  ; 1            ; 0            ; 1                              ;
+; r_state.DONE ; 1            ; 1            ; 0                              ;
++--------------+--------------+--------------+--------------------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------+
+; State Machine - |cordic_wrapper|pseudo_rand_num_gen:cordic_driver_0|r_state ;
++--------------+--------------+--------------+--------------------------------+
+; Name         ; r_state.IDLE ; r_state.DONE ; r_state.RUN                    ;
++--------------+--------------+--------------+--------------------------------+
+; r_state.IDLE ; 0            ; 0            ; 0                              ;
+; r_state.RUN  ; 1            ; 0            ; 1                              ;
+; r_state.DONE ; 1            ; 1            ; 0                              ;
++--------------+--------------+--------------+--------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                              ;
++--------------------------------------------------+--------------------------------------------------------------+
+; Register name                                    ; Reason for Removal                                           ;
++--------------------------------------------------+--------------------------------------------------------------+
+; cordic_top_5:cordic_top_0|X[11][17]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][16]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][15]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][14]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][13]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][12]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][11]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][10]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][9]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][8]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][7]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][6]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][5]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][4]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][3]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][2]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][1]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|X[11][0]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][17]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][16]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][15]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][14]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][13]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][12]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][11]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][10]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][9]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][8]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][7]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][6]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][5]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][4]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][3]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][2]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][1]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Y[11][0]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][17]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][16]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][15]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][14]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][13]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][12]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][11]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][10]              ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][9]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][8]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][7]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][6]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][5]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][4]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][3]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][2]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][1]               ; Lost fanout                                                  ;
+; cordic_top_5:cordic_top_0|Z[11][0]               ; Lost fanout                                                  ;
+; signature_analyzer:cordic_monitor_0|r_state.IDLE ; Merged with pseudo_rand_num_gen:cordic_driver_0|r_state.IDLE ;
+; Total Number of Removed Registers = 55           ;                                                              ;
++--------------------------------------------------+--------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 222   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 167   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 157   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; async_reset:async_rst_0|rst            ; 312     ;
+; async_reset:async_rst_0|rff1           ; 1       ;
+; Total number of inverted registers = 2 ;         ;
++----------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------+
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |cordic_wrapper|signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[52] ;
+; 3:1                ; 49 bits   ; 98 LEs        ; 49 LEs               ; 49 LEs                 ; Yes        ; |cordic_wrapper|pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[42] ;
+; 3:1                ; 49 bits   ; 98 LEs        ; 49 LEs               ; 49 LEs                 ; Yes        ; |cordic_wrapper|signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[15] ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |cordic_wrapper|cordic_top_5:cordic_top_0|Z                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |cordic_wrapper ;
++--------------------+-------+---------------------------------------------------+
+; Parameter Name     ; Value ; Type                                              ;
++--------------------+-------+---------------------------------------------------+
+; NUM_MICRO_ROTATION ; 12    ; Signed Integer                                    ;
+; INPUT_DATA_WIDTH   ; 49    ; Signed Integer                                    ;
+; OUTPUT_DATA_WIDTH  ; 54    ; Signed Integer                                    ;
+; DATA_WIDTH         ; 56    ; Signed Integer                                    ;
++--------------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: pseudo_rand_num_gen:cordic_driver_0 ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; DATA_WIDTH     ; 49    ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0 ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; NUM_BITS       ; 49    ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cordic_top_5:cordic_top_0 ;
++--------------------+-------+-------------------------------------------+
+; Parameter Name     ; Value ; Type                                      ;
++--------------------+-------+-------------------------------------------+
+; NUM_MICRO_ROTATION ; 12    ; Signed Integer                            ;
++--------------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: signature_analyzer:cordic_monitor_0 ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; DATA_WIDTH     ; 54    ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: signature_analyzer:cordic_monitor_0|misr:misr_0 ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; NUM_BITS       ; 54    ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Port Connectivity Checks: "signature_analyzer:cordic_monitor_0" ;
++---------------------+-------+----------+------------------------+
+; Port                ; Type  ; Severity ; Details                ;
++---------------------+-------+----------+------------------------+
+; i_seed_data[53..49] ; Input ; Info     ; Stuck at GND           ;
++---------------------+-------+----------+------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 222                         ;
+;     CLR               ; 64                          ;
+;     ENA               ; 54                          ;
+;     ENA CLR           ; 103                         ;
+;     plain             ; 1                           ;
+; arriav_lcell_comb     ; 1953                        ;
+;     arith             ; 1272                        ;
+;         1 data inputs ; 38                          ;
+;         2 data inputs ; 166                         ;
+;         3 data inputs ; 391                         ;
+;         4 data inputs ; 89                          ;
+;         5 data inputs ; 588                         ;
+;     normal            ; 681                         ;
+;         2 data inputs ; 9                           ;
+;         3 data inputs ; 202                         ;
+;         4 data inputs ; 230                         ;
+;         5 data inputs ; 87                          ;
+;         6 data inputs ; 153                         ;
+; arriav_mac            ; 2                           ;
+; boundary_port         ; 172                         ;
+;                       ;                             ;
+; Max LUT depth         ; 58.20                       ;
+; Average LUT depth     ; 37.46                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+    Info: Processing started: Wed Jan 24 22:56:59 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Cordic_fpga -c Cordic_fpga
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 14 of the 14 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file cordic-demo/src/verilog/signature_analyzer.sv
+    Info (12023): Found entity 1: signature_analyzer File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/signature_analyzer.sv Line: 2
+Info (12021): Found 1 design units, including 0 entities, in source file cordic-demo/src/verilog/pseudo_rand_num_gen_pkg.sv
+    Info (12022): Found design unit 1: pseudo_rand_num_gen_pkg (SystemVerilog) File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/pseudo_rand_num_gen_pkg.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file cordic-demo/src/verilog/pseudo_rand_num_gen.sv
+    Info (12023): Found entity 1: pseudo_rand_num_gen File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/pseudo_rand_num_gen.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file cordic-demo/src/verilog/misr.sv
+    Info (12023): Found entity 1: misr File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file cordic-demo/src/verilog/lfsr.sv
+    Info (12023): Found entity 1: lfsr File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 1
+Info (12021): Found 1 design units, including 0 entities, in source file cordic-demo/src/verilog/cordic_wrapper_pkg.sv
+    Info (12022): Found design unit 1: cordic_wrapper_pkg (SystemVerilog) File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper_pkg.sv Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file cordic-demo/src/verilog/cordic_wrapper.sv
+    Info (12023): Found entity 1: cordic_wrapper File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file cordic-demo/src/verilog/cordic_top.sv
+    Info (12023): Found entity 1: cordic_top_5 File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_top.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file cordic-demo/src/verilog/async_reset.sv
+    Info (12023): Found entity 1: async_reset File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/async_reset.sv Line: 1
+Info (12127): Elaborating entity "cordic_wrapper" for the top level hierarchy
+Info (12128): Elaborating entity "async_reset" for hierarchy "async_reset:async_rst_0" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper.sv Line: 52
+Info (12128): Elaborating entity "pseudo_rand_num_gen" for hierarchy "pseudo_rand_num_gen:cordic_driver_0" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper.sv Line: 78
+Info (12128): Elaborating entity "lfsr" for hierarchy "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/pseudo_rand_num_gen.sv Line: 59
+Info (12128): Elaborating entity "cordic_top_5" for hierarchy "cordic_top_5:cordic_top_0" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper.sv Line: 176
+Warning (10036): Verilog HDL or VHDL warning at cordic_top.sv(66): object "quadrant" assigned a value but never read File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_top.sv Line: 66
+Warning (10036): Verilog HDL or VHDL warning at cordic_top.sv(92): object "dbg_prerotate_mode" assigned a value but never read File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_top.sv Line: 92
+Warning (10036): Verilog HDL or VHDL warning at cordic_top.sv(98): object "dbg_func_mode" assigned a value but never read File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_top.sv Line: 98
+Warning (10230): Verilog HDL assignment warning at cordic_top.sv(191): truncated value with size 34 to match size of target (18) File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_top.sv Line: 191
+Warning (10230): Verilog HDL assignment warning at cordic_top.sv(192): truncated value with size 34 to match size of target (18) File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_top.sv Line: 192
+Info (12128): Elaborating entity "signature_analyzer" for hierarchy "signature_analyzer:cordic_monitor_0" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper.sv Line: 204
+Info (12128): Elaborating entity "misr" for hierarchy "signature_analyzer:cordic_monitor_0|misr:misr_0" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/signature_analyzer.sv Line: 59
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[1]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[1]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[1]~1" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[1]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[1]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[1]~1" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[2]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[2]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[2]~5" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[2]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[2]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[2]~5" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[3]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[3]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[3]~9" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[3]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[3]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[3]~9" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[4]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[4]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[4]~13" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[4]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[4]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[4]~13" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[5]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[5]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[5]~17" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[5]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[5]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[5]~17" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[6]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[6]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[6]~21" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[6]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[6]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[6]~21" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[7]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[7]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[7]~25" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[7]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[7]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[7]~25" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[8]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[8]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[8]~29" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[8]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[8]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[8]~29" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[9]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[9]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[9]~33" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[9]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[9]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[9]~33" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[10]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[10]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[10]~37" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[10]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[10]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[10]~37" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[11]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[11]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[11]~41" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[11]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[11]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[11]~41" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[12]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[12]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[12]~45" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[12]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[12]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[12]~45" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[13]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[13]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[13]~49" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[13]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[13]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[13]~49" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[14]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[14]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[14]~53" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[14]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[14]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[14]~53" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[15]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[15]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[15]~57" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[15]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[15]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[15]~57" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[16]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[16]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[16]~61" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[16]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[16]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[16]~61" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[17]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[17]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[17]~65" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[18]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[18]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[18]~69" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[19]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[19]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[19]~73" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[17]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[17]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[17]~65" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[20]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[20]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[20]~77" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[18]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[18]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[18]~69" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[21]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[21]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[21]~81" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[19]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[19]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[19]~73" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[22]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[22]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[22]~85" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[20]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[20]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[20]~77" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[23]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[23]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[23]~89" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[21]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[21]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[21]~81" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[24]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[24]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[24]~93" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[22]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[22]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[22]~85" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[25]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[25]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[25]~97" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[23]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[23]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[23]~89" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[26]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[26]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[26]~101" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[24]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[24]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[24]~93" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[27]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[27]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[27]~105" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[25]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[25]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[25]~97" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[28]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[28]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[28]~109" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[26]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[26]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[26]~101" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[29]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[29]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[29]~113" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[27]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[27]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[27]~105" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[30]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[30]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[30]~117" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[28]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[28]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[28]~109" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[31]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[31]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[31]~121" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[29]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[29]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[29]~113" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[32]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[32]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[32]~125" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[30]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[30]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[30]~117" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[33]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[33]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[33]~129" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[31]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[31]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[31]~121" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[34]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[34]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[34]~133" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[32]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[32]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[32]~125" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[35]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[35]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[35]~137" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[36]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[36]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[36]~141" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[37]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[37]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[37]~145" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[33]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[33]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[33]~129" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[38]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[38]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[38]~149" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[34]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[34]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[34]~133" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[39]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[39]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[39]~153" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[35]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[35]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[35]~137" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[40]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[40]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[40]~157" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[36]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[36]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[36]~141" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[41]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[41]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[41]~161" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[37]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[37]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[37]~145" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[42]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[42]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[42]~165" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[38]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[38]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[38]~149" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[43]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[43]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[43]~169" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[39]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[39]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[39]~153" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[44]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[44]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[44]~173" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[40]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[40]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[40]~157" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[45]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[45]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[45]~177" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[41]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[41]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[41]~161" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[46]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[46]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[46]~181" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[42]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[42]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[42]~165" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[47]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[47]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[47]~185" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[43]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[43]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[43]~169" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[48]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[48]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[48]~189" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[44]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[44]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[44]~173" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[49]" is converted into an equivalent circuit using register "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[49]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[49]~193" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/misr.sv Line: 31
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[45]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[45]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[45]~177" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[46]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[46]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[46]~181" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[47]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[47]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[47]~185" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[48]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[48]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[48]~189" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+    Warning (13310): Register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[49]" is converted into an equivalent circuit using register "pseudo_rand_num_gen:cordic_driver_0|lfsr:lfsr_0|r_lfsr_data[49]~_emulated" and latch "signature_analyzer:cordic_monitor_0|misr:misr_0|r_misr_data[49]~193" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/lfsr.sv Line: 32
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 54 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 7 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "i_data[16]" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper.sv Line: 20
+    Warning (15610): No output dependent on input pin "i_data[17]" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper.sv Line: 20
+    Warning (15610): No output dependent on input pin "i_data[34]" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper.sv Line: 20
+    Warning (15610): No output dependent on input pin "i_data[35]" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper.sv Line: 20
+    Warning (15610): No output dependent on input pin "i_data[52]" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper.sv Line: 20
+    Warning (15610): No output dependent on input pin "i_data[53]" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper.sv Line: 20
+    Warning (15610): No output dependent on input pin "i_data[55]" File: C:/Users/ziyul/Documents/GitHub/CORDIC-demo/src/verilog/cordic_wrapper.sv Line: 20
+Info (21057): Implemented 2225 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 114 input pins
+    Info (21059): Implemented 58 output pins
+    Info (21061): Implemented 2051 logic cells
+    Info (21062): Implemented 2 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 113 warnings
+    Info: Peak virtual memory: 4914 megabytes
+    Info: Processing ended: Wed Jan 24 22:57:10 2024
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:07
+
+

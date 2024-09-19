@@ -1,0 +1,12 @@
+
+State Machine - |cordic_wrapper|signature_analyzer:cordic_monitor_0|r_state
+Name r_state.IDLE r_state.DONE r_state.RUN 
+r_state.IDLE 0 0 0 
+r_state.RUN 1 0 1 
+r_state.DONE 1 1 0 
+
+State Machine - |cordic_wrapper|pseudo_rand_num_gen:cordic_driver_0|r_state
+Name r_state.IDLE r_state.DONE r_state.RUN 
+r_state.IDLE 0 0 0 
+r_state.RUN 1 0 1 
+r_state.DONE 1 1 0 
